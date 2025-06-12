@@ -9,8 +9,26 @@
 </head>
 <body>
 
-    <h1>Mis Recomendaciones</h1>
+    <header>
+    <h1>Galería de Arte Digital</h1>
+    <div class="category-filter">
+        <button class="category-btn active" data-category="all">Todas las obras</button>
+        <button class="category-btn" data-category="peliculas">Películas</button>
+        <button class="category-btn" data-category="series">Series</button>
+        <button class="category-btn" data-category="libros">Libros</button>
+        <button class="category-btn" data-category="musica">Música</button>
+        <button class="category-btn" data-category="juegos">Juegos</button>
+    </div>
+</header>
 
+    <section id="peliculas" class="content-section">
+    <h2>Películas</h2>
+    <div class="cards-container">
+        <!-- Tus tarjetas de películas aquí (mantén el mismo contenido) -->
+    </div>
+</section>
+
+<section id="peliculas" class="content-section">
     <h2>Películas</h2>
     <div class="cards-container">
         <div class="card">
@@ -112,7 +130,8 @@
             <p><strong>Temas clave:</strong> <span class="tag">Violencia estructural</span> <span class="tag">desigualdad</span></p>
         </div>
     </div>
-
+</section>
+<section id="series" class="content-section">
     <h2>Series</h2>
     <div class="cards-container">
         <div class="card">
@@ -164,7 +183,8 @@
             <p><strong>Temas clave:</strong> <span class="tag">Poder institucional</span> <span class="tag">complejidad política</span></p>
         </div>
     </div>
-
+</section>
+<section id="libros" class="content-section">
     <h2>Libros</h2>
     <div class="cards-container">
         <div class="card">
@@ -266,7 +286,8 @@
             <p><strong>Temas clave:</strong> <span class="tag">Control social</span> <span class="tag">manipulación masiva</span></p>
         </div>
     </div>
-
+</section>
+<section id="musica" class="content-section">
     <h2>Música</h2>
     <div class="cards-container">
         <div class="card">
@@ -306,9 +327,8 @@
             <p><strong>Temas/Criterios de Interés:</strong> <span class="tag">Sátira social</span> <span class="tag">virtuosismo musical</span> <span class="tag">juego de palabras</span> <span class="tag">crítica a través del humor</span></p>
         </div>
     </div>
-<!-- ... código existente de la sección de Música ... -->
-    </div>
-
+</section>
+<section id="juegos" class="content-section">
     <h2>Juegos</h2>
     <div class="cards-container">
         <div class="card">
@@ -350,6 +370,7 @@
 
 </body>
 </html>
+<script src="main.js"></script>
 </body>
 </html>
 ```
