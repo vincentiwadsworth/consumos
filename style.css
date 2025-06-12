@@ -1,20 +1,20 @@
 /* Paleta cálida otoño-invierno con tonos pastel */
 :root {
-  --color-bg-light: #f8f4e3; /* Beige claro cálido */
-  --color-bg-card-light: #f0e6d2; /* Gris beige suave */
-  --color-accent-light: #d4a373; /* Terracota pastel */
-  --color-accent-hover-light: #b78c64; /* Terracota más oscuro */
-  --color-text-light: #4a4a4a; /* Gris oscuro cálido */
+  --color-bg-light: #f8f4e3;
+  --color-bg-card-light: #f0e6d2;
+  --color-accent-light: #d4a373;
+  --color-accent-hover-light: #b78c64;
+  --color-text-light: #4a4a4a;
 
-  --color-bg-dark: #2a201a; /* Marrón oscuro profundo */
-  --color-bg-card-dark: #3e2f2f; /* Marrón rojizo oscuro */
-  --color-accent-dark: #b38b5f; /* Mostaza dorado */
-  --color-accent-hover-dark: #8f6e48; /* Mostaza más oscuro */
-  --color-text-dark: #e0d5c5; /* Beige claro para texto oscuro */
+  --color-bg-dark: #2a201a;
+  --color-bg-card-dark: #3e2f2f;
+  --color-accent-dark: #b38b5f;
+  --color-accent-hover-dark: #8f6e48;
+  --color-text-dark: #e0d5c5;
 }
 
 body {
-  font-family: 'Georgia', serif; /* Tipografía más cálida */
+  font-family: 'Georgia', serif;
   background-color: var(--color-bg-light);
   color: var(--color-text-light);
   margin: 0;
@@ -22,39 +22,9 @@ body {
   transition: all 0.3s ease;
 }
 
-@media (prefers-color-scheme: dark) {
-  body {
-    --color-bg-light: var(--color-bg-dark);
-    --color-bg-card-light: var(--color-bg-card-dark);
-    --color-accent-light: var(--color-accent-dark);
-    --color-accent-hover-light: var(--color-accent-hover-dark);
-    --color-text-light: var(--color-text-dark);
-    background-color: var(--color-bg-dark);
-    color: var(--color-text-dark);
-  }
-}
-
-h1, h2 {
-  text-align: center;
-  color: var(--color-accent-light);
-  margin-bottom: 30px;
-  text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
-}
-
-h2 {
-  border-bottom: 2px solid var(--color-accent-light);
-  padding-bottom: 10px;
-}
-
-.cards-container {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 20px;
-  justify-content: center;
-  margin-top: 20px;
-}
-
+/* Estilos para imágenes de tarjetas */
 .card {
+  position: relative;
   background: linear-gradient(145deg, var(--color-bg-card-light), var(--color-bg-card-light));
   border: 1px solid rgba(0,0,0,0.05);
   border-radius: 12px;
@@ -65,16 +35,56 @@ h2 {
   backdrop-filter: blur(4px);
 }
 
-.card:hover {
-  transform: translateY(-5px) scale(1.02);
-  box-shadow: 0 12px 24px rgba(0,0,0,0.15);
+.card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 150px;
+  background: var(--color-accent-light);
+  border-radius: 12px 12px 0 0;
+  opacity: 0.2;
 }
 
-.card h3 {
-  color: var(--color-accent-light);
-  font-family: 'Merriweather', serif;
+/* Íconos para categorías */
+.category-btn {
+  position: relative;
+  padding-left: 32px;
 }
 
+.category-btn::before {
+  content: '';
+  position: absolute;
+  left: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 20px;
+  height: 20px;
+  background: var(--color-accent-light);
+  mask-size: contain;
+  mask-repeat: no-repeat;
+  -webkit-mask-size: contain;
+  -webkit-mask-repeat: no-repeat;
+}
+
+.category-btn[data-category="peliculas"]::before {
+  mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='white' d='M18 4l2 4h-3l-2-4h-3l2 4h-3l-2-4H8l2 4H6l-2-4H0v16h24V4h-6zm-2 16H4V8h16v12z'/%3E%3C/svg%3E");
+}
+
+.category-btn[data-category="series"]::before {
+  mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='white' d='M21 3H3c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h6v-2H3V5h18v14h-6v2h6c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-9 14H3v-2h9v2zm0-4H3v-2h9v2zm0-4H3V7h9v2z'/%3E%3C/svg%3E");
+}
+
+/* Emojis para países */
+.country-flag {
+  display: inline-block;
+  margin-right: 4px;
+  font-size: 1.2em;
+  vertical-align: middle;
+}
+
+/* Mejoras visuales */
 .tag {
   background: linear-gradient(90deg, #f5e0d7, #e8d2c5);
   color: var(--color-accent-light);
@@ -83,46 +93,55 @@ h2 {
   font-size: 0.8em;
   margin: 4px 0;
   box-shadow: inset 0 0 6px rgba(0,0,0,0.05);
+  position: relative;
 }
 
-.category-btn {
-  background: linear-gradient(135deg, var(--color-accent-light), var(--color-accent-hover-light));
-  color: white;
-  border: none;
-  padding: 10px 20px;
-  border-radius: 24px;
-  cursor: pointer;
-  font-weight: 500;
-  transition: all 0.3s;
-  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+.tag::after {
+  content: '';
+  position: absolute;
+  bottom: -4px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 80%;
+  height: 2px;
+  background: var(--color-accent-light);
+  opacity: 0.3;
 }
 
-.category-btn:hover {
-  background: linear-gradient(135deg, var(--color-accent-hover-light), var(--color-accent-light));
-  transform: translateY(-2px);
+/* Responsive images */
+.card img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  border-radius: 8px;
+  margin-bottom: 12px;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
 }
 
-.category-btn.active {
-  background: linear-gradient(135deg, var(--color-accent-hover-light), var(--color-accent-light));
-  box-shadow: 0 0 0 2px var(--color-accent-light), 0 4px 8px rgba(0,0,0,0.15);
-  font-weight: 600;
+/* Dark mode adjustments */
+@media (prefers-color-scheme: dark) {
+  .card::before {
+    background: var(--color-accent-dark);
+  }
+  
+  .tag::after {
+    background: var(--color-accent-dark);
+  }
 }
 
-/* Mejoras de accesibilidad */
-.card:focus-within,
-.category-btn:focus {
-  outline: 3px solid var(--color-accent-light);
-  outline-offset: 2px;
-}
-
+/* Mobile optimizations */
 @media (max-width: 768px) {
   .card {
     width: calc(50% - 20px);
   }
-}
-
-@media (max-width: 480px) {
-  .card {
-    width: calc(100% - 20px);
+  
+  .category-btn {
+    padding-left: 28px;
+    font-size: 0.9em;
+  }
+  
+  .category-btn::before {
+    width: 18px;
+    height: 18px;
   }
 }
