@@ -1,180 +1,128 @@
+/* Paleta cálida otoño-invierno con tonos pastel */
+:root {
+  --color-bg-light: #f8f4e3; /* Beige claro cálido */
+  --color-bg-card-light: #f0e6d2; /* Gris beige suave */
+  --color-accent-light: #d4a373; /* Terracota pastel */
+  --color-accent-hover-light: #b78c64; /* Terracota más oscuro */
+  --color-text-light: #4a4a4a; /* Gris oscuro cálido */
+
+  --color-bg-dark: #2a201a; /* Marrón oscuro profundo */
+  --color-bg-card-dark: #3e2f2f; /* Marrón rojizo oscuro */
+  --color-accent-dark: #b38b5f; /* Mostaza dorado */
+  --color-accent-hover-dark: #8f6e48; /* Mostaza más oscuro */
+  --color-text-dark: #e0d5c5; /* Beige claro para texto oscuro */
+}
+
 body {
-  font-family: sans-serif;
-  background-color: #f4f4f9;
-  color: #333;
+  font-family: 'Georgia', serif; /* Tipografía más cálida */
+  background-color: var(--color-bg-light);
+  color: var(--color-text-light);
   margin: 0;
   padding: 20px;
+  transition: all 0.3s ease;
+}
+
+@media (prefers-color-scheme: dark) {
+  body {
+    --color-bg-light: var(--color-bg-dark);
+    --color-bg-card-light: var(--color-bg-card-dark);
+    --color-accent-light: var(--color-accent-dark);
+    --color-accent-hover-light: var(--color-accent-hover-dark);
+    --color-text-light: var(--color-text-dark);
+    background-color: var(--color-bg-dark);
+    color: var(--color-text-dark);
+  }
 }
 
 h1, h2 {
-    text-align: center;
-    color: #2a2a2a;
-    margin-bottom: 30px;
+  text-align: center;
+  color: var(--color-accent-light);
+  margin-bottom: 30px;
+  text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
 }
 
 h2 {
-    margin-top: 40px;
-    border-bottom: 2px solid #0056b3;
-    padding-bottom: 10px;
-    display: inline-block; /* Para que el borde no ocupe todo el ancho */
+  border-bottom: 2px solid var(--color-accent-light);
+  padding-bottom: 10px;
 }
 
-/* Contenedor para centrar los h2 */
-body > h2 {
-    display: block;
-    text-align: center; /* Centra el h2 que es hijo directo del body */
-}
-/* Asegurar que los contenedores de tarjetas estén debajo del h2 centrado */
 .cards-container {
   display: flex;
-  flex-wrap: wrap; 
-  gap: 20px; 
-  justify-content: center; 
-  margin-top: 20px; /* Espacio después del título de sección */
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: center;
+  margin-top: 20px;
 }
 
 .card {
-  background-color: #ffffff;
-  border: 1px solid #ddd;
-  border-radius: 8px; 
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); 
+  background: linear-gradient(145deg, var(--color-bg-card-light), var(--color-bg-card-light));
+  border: 1px solid rgba(0,0,0,0.05);
+  border-radius: 12px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.08);
   padding: 20px;
-  width: 300px; 
-  transition: transform 0.3s ease, box-shadow 0.3s ease; 
-  display: flex;
-  flex-direction: column;
+  width: 300px;
+  transition: all 0.3s cubic-bezier(0.18, 0.89, 0.32, 1.28);
+  backdrop-filter: blur(4px);
 }
 
 .card:hover {
-  transform: translateY(-5px); 
-  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); 
+  transform: translateY(-5px) scale(1.02);
+  box-shadow: 0 12px 24px rgba(0,0,0,0.15);
 }
 
 .card h3 {
-  margin-top: 0;
-  color: #0056b3; 
-  font-size: 1.2em; /* Un poco más grande para el título de la tarjeta */
+  color: var(--color-accent-light);
+  font-family: 'Merriweather', serif;
 }
 
-.card p {
-  font-size: 0.9em;
-  line-height: 1.6;
-  margin-bottom: 10px; /* Espacio entre párrafos dentro de la tarjeta */
+.tag {
+  background: linear-gradient(90deg, #f5e0d7, #e8d2c5);
+  color: var(--color-accent-light);
+  border-radius: 16px;
+  padding: 4px 12px;
+  font-size: 0.8em;
+  margin: 4px 0;
+  box-shadow: inset 0 0 6px rgba(0,0,0,0.05);
 }
 
-.card p:last-child {
-    margin-bottom: 0; /* Sin margen inferior para el último párrafo (usualmente los tags) */
-}
-
-.card p strong {
-  color: #555;
-}
-
-.card .tag {
-  display: inline-block;
-  background-color: #e7f3ff; 
-  color: #0056b3; 
-  padding: 4px 10px; /* Más padding para los tags */
-  border-radius: 12px; /* Tags más redondeados tipo "píldora" */
-  font-size: 0.75em; /* Tags un poco más pequeños */
-  margin-right: 5px;
-  margin-bottom: 5px;
+.category-btn {
+  background: linear-gradient(135deg, var(--color-accent-light), var(--color-accent-hover-light));
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 24px;
+  cursor: pointer;
   font-weight: 500;
+  transition: all 0.3s;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.category-btn:hover {
+  background: linear-gradient(135deg, var(--color-accent-hover-light), var(--color-accent-light));
+  transform: translateY(-2px);
+}
+
+.category-btn.active {
+  background: linear-gradient(135deg, var(--color-accent-hover-light), var(--color-accent-light));
+  box-shadow: 0 0 0 2px var(--color-accent-light), 0 4px 8px rgba(0,0,0,0.15);
+  font-weight: 600;
+}
+
+/* Mejoras de accesibilidad */
+.card:focus-within,
+.category-btn:focus {
+  outline: 3px solid var(--color-accent-light);
+  outline-offset: 2px;
 }
 
 @media (max-width: 768px) {
   .card {
-    width: calc(50% - 20px); /* Dos tarjetas por fila, ajustando el gap */
-  }
-  /* Si solo queda una tarjeta en la última fila, que se centre */
-  .cards-container {
-    justify-content: space-around; /* Para que las tarjetas se distribuyan mejor */
+    width: calc(50% - 20px);
   }
 }
 
 @media (max-width: 480px) {
   .card {
-    width: calc(100% - 20px); /* Una tarjeta por fila, ajustando el gap */
+    width: calc(100% - 20px);
   }
-   h1 {
-        font-size: 1.8em;
-    }
-    h2 {
-        font-size: 1.5em;
-    }
-}
-
-/* ===== Modo Nocturno Automático ===== */
-@media (prefers-color-scheme: dark) {
-    body {
-        background-color: #121212;
-        color: #e0e0e0;
-    }
-    
-    .card {
-        background-color: #1e1e1e;
-        border-color: #333;
-        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
-    }
-    
-    .card:hover {
-        box-shadow: 0 8px 16px rgba(0, 0, 0, 0.5);
-    }
-    
-    .card h3 {
-        color: #bb86fc; /* Color púrpura para títulos */
-    }
-    
-    .tag {
-        background-color: #3700b3;
-        color: #ffffff;
-    }
-}
-
-/* ===== Filtro de Categorías ===== */
-.category-filter {
-    display: flex;
-    justify-content: center;
-    gap: 10px;
-    margin: 20px 0;
-    flex-wrap: wrap;
-}
-
-.category-btn {
-    background: #0056b3;
-    color: white;
-    border: none;
-    padding: 8px 16px;
-    border-radius: 20px;
-    cursor: pointer;
-    transition: all 0.3s;
-    font-size: 0.9em;
-}
-
-.category-btn:hover {
-    background: #003d7a;
-    transform: translateY(-2px);
-}
-
-.category-btn.active {
-    background: #003366;
-    font-weight: bold;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
-}
-
-.hidden {
-    display: none;
-}
-
-/* Mejorar accesibilidad en modo nocturno */
-@media (prefers-color-scheme: dark) {
-    .category-btn {
-        background: #3700b3;
-    }
-    .category-btn:hover {
-        background: #5600b3;
-    }
-    .category-btn.active {
-        background: #7f39fb;
-    }
 }
